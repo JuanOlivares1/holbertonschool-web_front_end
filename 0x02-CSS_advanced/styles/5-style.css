@@ -17,12 +17,11 @@
 	--font-size-x-large: 2.3rem;
 	--font-size-xx-large: 4.8rem;
 }
-
-html {
+html{
 	scroll-behavior: smooth;
 	font-size: 62.5%;
 }
-body {
+body{
 	color: var(--text-color);
 	font-family: var(--font-family-base);
 	font-size: var(--font-size-medium);
@@ -30,16 +29,15 @@ body {
 h1, h2, h3, h4, h5, h6{
     font-family: var(--font-family-title);
 }
-a {
+a{
 	color: var(--text-color);
 }
-
-.visually-hidden {
+.visually-hidden{
 	display: none;
 }
-.card-category {
+.card-category{
 	color: var(--color-primary);
 }
-.section-tagline {
+.section-tagline{
 	color: var(--color-primary);
 }
