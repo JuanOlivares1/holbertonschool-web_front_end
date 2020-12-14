@@ -1,3 +1,4 @@
+/* */
 :root {
 	/* Colors */
 	--color-primary: #d73953;
@@ -8,7 +9,7 @@
 	--text-color: var(--color-black);
 	/* fonts */
 	--font-family-base: Open Sans, Helvetica Neue, Helvetica, Arial, sans-serif;
-	--font-family-title: Raleway, Helvetica Neue, Helvetica, Arial, sans-serif;
+    --font-family-title: Raleway, Helvetica Neue, Helvetica, Arial, sans-serif;
 	/* font-sizes */
 	--font-size-small: 1.2rem;
 	--font-size-medium: 1.6rem;
