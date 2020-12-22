@@ -560,9 +560,9 @@
   .main-article {
     padding: 5rem 0;
   }
-  
+
   /* Post
-    ============================= */
+      ============================= */
 
   .post {
     display: flex;
@@ -574,5 +574,5 @@
 
   .post-aside {
     order: -1;
-    min-width: 20%: 
+    min-width: 20%;
   }
