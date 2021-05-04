@@ -1,0 +1,7 @@
+/* Sass foreach */
+$widths: (1:100%, 2:50%, 3:33.3333333333%, 4:25%);
+@each $number, $width in $widths {
+    .col-#{$number} {
+        width: #{$width};
+    }
+}
