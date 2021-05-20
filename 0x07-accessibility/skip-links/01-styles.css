@@ -190,10 +190,9 @@
   }
 
   .off-screen {
-    left: -100w;
+    left: -100vw;
     position: absolute;
   }
-
   .skip-link {
     background: var(--color-black);
     color: var(--color-white);
@@ -206,7 +205,6 @@
     transform: translateY(-1rem);
     transition: transform .2s ease-in-out, opacity .2s ease-in-out;
   }
-
   .skip-link:focus {
     opacity: 1;
     transform: translateY(0);
