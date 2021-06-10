@@ -4,7 +4,7 @@ $theme-colors: (
   "primary": #E0003C,
   "muted": #8C8C8C
 );
-$body-color: #E0003C;
+$border-color:(#E0003C);
 
 @import "node_modules/bootstrap/scss/bootstrap.scss";
 
