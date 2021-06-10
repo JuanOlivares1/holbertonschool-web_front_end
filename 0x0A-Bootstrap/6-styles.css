@@ -7898,6 +7898,7 @@ textarea.form-control-lg {
   color: white; }
 
 .card, .card-header, .card-footer {
+  border-color: #E0003C;
   border-radius: 1rem;
   overflow: hidden; }
 
