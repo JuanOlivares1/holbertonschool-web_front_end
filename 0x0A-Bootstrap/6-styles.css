@@ -7893,6 +7893,9 @@ textarea.form-control-lg {
 
   .d-print-none {
     display: none !important; } }
+.card-header {
+  background-color: #E0003C; }
+
 .card, .card-header, .card-footer {
   border-color: #E0003C;
   border-radius: 1rem; }
