@@ -4,8 +4,10 @@ $theme-colors: (
   "primary": #E0003C,
   "muted": #8C8C8C
 );
+$body-color: #E0003C;
 
 @import "node_modules/bootstrap/scss/bootstrap.scss";
+
 
 .card-header{
     background-color: #E0003C;
@@ -14,4 +16,5 @@ $theme-colors: (
 .card, .card-header, .card-footer {
     border-color: #E0003C;
     border-radius: 1rem;
+    overflow: hidden;
 }
