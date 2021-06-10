@@ -5,9 +5,9 @@ $theme-colors: (
   "muted": #8C8C8C
 );
 
+@import "node_modules/bootstrap/scss/bootstrap.scss";
+
 .card, .card-header, .card-footer {
     border-color: #E0003C;
     border-radius: 1rem;
 }
-
-@import "node_modules/bootstrap/scss/bootstrap.scss";
