@@ -1,7 +1,12 @@
 // Custom.scss
 // Option A: Include all of Bootstrap
 $theme-colors: (
-  "primary": #E0003C
+  "primary": #E0003C,
+  "muted": #8C8C8C
 );
+
+.card, .card-header, .card-footer {
+    border: 1rem solid #E0003C;
+}
 
 @import "node_modules/bootstrap/scss/bootstrap.scss";
