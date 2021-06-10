@@ -1,5 +1,6 @@
 .card, .card-header, .card-footer {
-  border: 1rem solid #E0003C; }
+  border-color: #E0003C;
+  border-radius: 1rem; }
 
 /*!
  * Bootstrap v5.0.1 (https://getbootstrap.com/)
