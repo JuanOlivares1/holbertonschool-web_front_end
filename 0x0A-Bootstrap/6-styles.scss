@@ -1,5 +1,7 @@
 // Custom.scss
 // Option A: Include all of Bootstrap
-$primary-color: #E0003C;
+$theme-colors: (
+  "primary": #E0003C
+);
 
-@import "node_modules/bootstrap/scss/bootstrap";
+@import "node_modules/bootstrap/scss/bootstrap.scss";
