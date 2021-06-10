@@ -9,8 +9,9 @@ $theme-colors: (
 
 .card-header{
     background-color: #E0003C;
+    color: white;
 }
 .card, .card-header, .card-footer {
     border-color: #E0003C;
-    border-radius: 1rem !important;
+    border-radius: 1rem;
 }
