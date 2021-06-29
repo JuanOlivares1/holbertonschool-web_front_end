@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+    <head>
+
+        <meta charset="utf-8" />
+        <title>Task 0</title>
+        <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" 
+            integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" 
+            crossorigin="anonymous">
+            type="application/javascript"
+        </script>
+        <script type="text/javascript">           
+            let form = function createSearchForm () {
+                $("body").append("<input type=\"text\">");
+                $("body").append("<input type=\"submit\" id=\"submit\">");
+                $("#submit").click(function () {
+                    queryWikipedia($("input:first-child").val());
+                });
+                $("body").append("<ul></ul>");
+            }
+
+            function addNewArticle(id, title, snippet) {
+                $("ul").append("<li></li>");
+                $("li:last-child").append("<p></p>", "<p></p>");
+                $("li:last-child > p:first-child").append("<span>" + id + " - </span>");
+                $("li:last-child > p:first-child span").after("<b>" + title + "</b>");
+                $("li:last-child > p:last-child").append(snippet);
+            }
+
+            function queryWikipedia(search) {
+                let url = "https://en.wikipedia.org/w/api.php";
+                let data = {
+                    action: "query",
+                    list: "search",
+                    srsearch: search,
+                    format: "json"
+                }
+                url = url + "?origin=*";
+                Object.keys(data).forEach(function(key){ url += "&" + key + "=" + data[key]; });
+
+                fetch(url)
+                    .then(function(response){return response.json();})
+                    .then(function(response) {
+                        response.query.search.forEach(article => {
+                            addNewArticle(article.pageid, article.title, article.snippet);
+                        });
+                    })
+                    .catch(function(error){console.log(error);});
+            }
+
+            $(document).ready(function () {
+                form();
+            })
+        </script>
+    </head>
+
+    <body>
+        
+    </body>
+
+</html>

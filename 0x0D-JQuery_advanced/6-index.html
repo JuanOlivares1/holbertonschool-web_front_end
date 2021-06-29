@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+    <head>
+
+        <meta charset="utf-8" />
+        <title>Task 0</title>
+        <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js" 
+            integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" 
+            crossorigin="anonymous">
+            type="application/javascript"
+        </script>
+        <script type="text/javascript">           
+            let family = function createFamilyTree() {
+                $("body").append("<table></table>");
+                $("table").append("<thead></thead>", "<tbody></tbody>");
+
+                $("thead").append("<tr></tr>");
+                $("thead > tr").append("<th>Firstname</th>", "<th>Lastname</th>");
+            }
+            let newMem = function addNewMember(firstName, lastName, position) {
+                if (position == "Before"){
+                    $("tbody").prepend("<tr></tr>");
+                    $("tbody > tr").first().prepend("<td>" + firstName + "</td>", "<td>" + lastName + "</td>", "<td>(x)</td>");
+                    $("tbody tr > td:last-child").css("background-color", "orange").click(function () { $(this).parent().remove(); });
+                } else if (position == "After") {
+                    $("tbody").append("<tr></tr>");
+                    $("tbody > tr:last-child").append("<td>" + firstName + "</td>", "<td>" + lastName + "</td>", "<td>(x)</td>");
+                    $("tbody tr > td:last-child").css("background-color", "orange").click(function () { $(this).parent().remove(); });
+                }
+            }
+            let form = function createForm() {
+                /* submit button */
+                $("body").prepend("<input type=\"submit\" id=\"submit\">"); 
+                $("#submit").click(function () {
+                    let name = $("#firstname").val();
+                    let l_name = $("#lastname").val();
+                    let pos = $("#position").val();
+                    console.log(name + " " + l_name + " " + pos);
+                    newMem(name, l_name, pos);
+                });
+
+                /* select bar */
+                $("body").prepend("<select id=\"position\"></select>");
+                $("select").append("<option value=\"Before\">Before</option>", "<option value=\"After\">After</option>");
+                
+                /* text inputs */
+                $("body").prepend("<input type=\"text\" id=\"lastname\">");
+                $("body").prepend("<input type=\"text\" id=\"firstname\">");
+            }
+            $(document).ready(function () {
+                family();
+                form()
+                newMem("Guillaume", "Salva", "After");
+                newMem("Arielle", "Snizt", "After");
+                newMem("Fanette", "Snizt", "After");
+                newMem("Gerard", "Snizt", "After");
+                newMem("Victor", "Salva", "After");
+            });
+        </script>
+    </head>
+
+    <body>
+        
+    </body>
+
+</html>
