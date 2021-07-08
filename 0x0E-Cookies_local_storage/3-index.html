@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task - 0</title>
+    <script>
+        function setCookies() {
+            let name = document.getElementById("firstname").value;
+            let email = document.getElementById("email").value;
+            const d = new Date();
+            d.setTime(d.getTime() + (10*24*60*60*1000));
+
+            document.cookie = name + "=" + email + ";" + "expires=" + d.toUTCString();
+            showWelcomeMessageOrForm();
+        }
+
+        function showCookies() {
+            let body = document.body;
+            let p = document.createElement("p");
+            let cookies = document.cookie.split("; ");
+            let br, txt, c;
+
+            p.innerHTML = "Cookies: ";
+            cookies.forEach(cookie => {
+                c = cookie.split("=");
+                txt = document.createTextNode("Email: " + c[1] + " - Firstname: " + c[0]);
+                br = document.createElement("br");
+                p.appendChild(br);
+                p.appendChild(txt);
+            });
+            if (body.querySelector("p") != null) {
+                body.querySelector("p").remove();
+            }
+            body.appendChild(p);
+        }
+        
+        function getCookie(name) {
+            let cookies = document.cookie.split("; ");
+            let rtn = "";
+            
+            cookies.forEach(cookie => {
+                let c = cookie.split("=");
+                if (c[0] == name){
+                    rtn = c[1];
+                }
+            });
+            return (rtn)
+        }
+        
+        function showForm() {
+            let form = document.getElementById("form");
+            let wlcmMssg = document.getElementById("wlcmMssg");
+
+            if (wlcmMssg){
+                wlcmMssg.remove();
+            }
+            if (form){
+                form.style.display = "block";
+            }
+        }
+
+        function hideForm() {
+            let form = document.getElementById("form");
+
+            if (form){
+                form.style.display = "none";
+            }
+        }
+
+        function deleteCookiesAndShowForm() {
+            let cookies = document.cookie.split("; ");
+            const d = new Date();
+
+            d.setTime(d.getTime() + (-1));
+            cookies.forEach(cookie => {
+                c = cookie.split("=");
+                document.cookie = c[0] + "=; expires=" + d.toUTCString();
+            });
+            showForm();
+        }
+
+        function showWelcomeMessageOrForm() {
+            let body = document.body;
+            let cookies = document.cookie.split("; ");
+            let h1, a;
+
+            cookies.forEach(cookie => {
+                c = cookie.split("=");
+                if (c[0] == ""){
+                    showForm();
+                } else {
+                    h1 = document.createElement("h1");
+                    a = document.createElement("a");
+
+                    h1.innerHTML = "Welcome " + c[0];
+                    a.innerHTML = "(logout)"
+
+                    a.style.fontWeight = "normal";
+                    a.style.fontStyle = "italic";
+                    a.style.paddingLeft = "10px";
+                    a.style.cursor = "pointer";
+
+                    h1.appendChild(a);
+                    h1.setAttribute("id", "wlcmMssg");
+
+                    a.setAttribute("onclick", "logout()");
+                    hideForm();
+                    body.prepend(h1);
+                }
+            });
+        }
+        
+        function logout() {
+            let body = document.body;
+
+            deleteCookiesAndShowForm();
+            body.querySelector("h1").remove();
+        }
+        
+        window.onload = () => {
+            showWelcomeMessageOrForm();
+        };
+    </script>
+</head>
+<body>
+    <div id="form">
+        <h2>Login to the website</h2>
+        <input type="text" id="firstname" placeholder="Fristname">
+        <input type="text" id="email" placeholder="Email">
+        <input type="button" onclick="setCookies()" value="Log me in" id="login" >
+    </div>
+    <h2>Cookies</h2>
+    <input type="button" onclick="showCookies()" value="Show the cookies" id="cookies" >
+</body>
+</html> 

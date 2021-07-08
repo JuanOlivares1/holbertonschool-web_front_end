@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task - 0</title>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.js"></script>
+    <script
+        type="module"
+        src="https://cdn.jsdelivr.net/npm/js-cookie@rc/dist/js.cookie.min.mjs">
+    </script>
+    <script>
+        function setCookies() {
+            let name = document.getElementById("firstname").value;
+            let email = document.getElementById("email").value;
+
+            Cookies.set(name, email, { expires: 10 });
+        }
+
+        function showCookies() {
+            let body = document.body;
+            let p = document.createElement("p");
+            let cookies = document.cookie.split("; ");
+            let br, txt, c;
+
+            p.innerHTML = "Cookies: ";
+            cookies.forEach(cookie => {
+                c = cookie.split("=");
+                txt = document.createTextNode("Email: " + c[1] + " - Firstname: " + c[0]);
+                br = document.createElement("br");
+                p.appendChild(br);
+                p.appendChild(txt);
+            });
+            if (body.querySelector("p") != null) {
+                body.querySelector("p").remove();
+            }
+            body.appendChild(p);
+        }
+              
+        function showForm() {
+            let form = document.getElementById("form");
+            let wlcmMssg = document.getElementById("wlcmMssg");
+
+            if (wlcmMssg){
+                wlcmMssg.remove();
+            }
+            if (form){
+                form.style.display = "block";
+            }
+        }
+
+        function hideForm() {
+            let form = document.getElementById("form");
+
+            if (form){
+                form.style.display = "none";
+            }
+        }
+
+        function deleteCookiesAndShowForm() {
+            let cookies = document.cookie.split("; ");
+            
+            cookies.forEach(cookie => {
+                c = cookie.split("=");
+                Cookies.remove(c[0]);
+            });
+            showForm();
+        }
+
+        function logout() {
+            let body = document.body;
+
+            deleteCookiesAndShowForm();
+            if (body.querySelector("h1")){
+                body.querySelector("h1").remove();
+            }
+        }
+        
+        function showWelcomeMessageOrForm() {
+            let body = document.body;
+            let cookies = document.cookie.split("; ");
+            let h1, a;
+
+            cookies.forEach(cookie => {
+                c = cookie.split("=");
+                if (c[0] == ""){
+                    showForm();
+                } else {
+                    h1 = document.createElement("h1");
+                    a = document.createElement("a");
+
+                    h1.innerHTML = "Welcome " + c[0];
+                    a.innerHTML = "(logout)"
+
+                    a.style.fontWeight = "normal";
+                    a.style.fontStyle = "italic";
+                    a.style.paddingLeft = "10px";
+                    a.style.cursor = "pointer";
+
+                    h1.appendChild(a);
+                    h1.setAttribute("id", "wlcmMssg");
+
+                    a.setAttribute("onclick", "logout()");
+                    hideForm();
+                    body.prepend(h1);
+                }
+            });
+        }
+        
+        function setCookiesAndShowWelcomeMessage() {
+            setCookies();
+            showWelcomeMessageOrForm();
+        }
+
+        window.onload = () => {
+            showWelcomeMessageOrForm();
+        };
+    </script>
+</head>
+<body>
+    <div id="form">
+        <h2>Login to the website</h2>
+        <input type="text" id="firstname" placeholder="Fristname">
+        <input type="text" id="email" placeholder="Email">
+        <input type="button" onclick="setCookiesAndShowWelcomeMessage()" value="Log me in" id="login" >
+    </div>
+    <h2>Cookies</h2>
+    <input type="button" onclick="showCookies()" value="Show the cookies" id="cookies" >
+</body>
+</html> 
